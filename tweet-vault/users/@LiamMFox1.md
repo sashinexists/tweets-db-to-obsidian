@@ -1,0 +1,6 @@
+---
+user_id: 1168050412701868032
+twitter_handle: @LiamMFox1
+name: Liam M. Fox
+---
+Physics PhD student, also interested in mathematics and in philosophy
