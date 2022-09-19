@@ -1,6 +1,0 @@
----
-user_id: 771583225466531840
-twitter_handle: @johncarlosbaez
-name: John Carlos Baez
----
-I'm a mathematical physicist interested in saving the planet.

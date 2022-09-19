@@ -1,6 +1,0 @@
----
-user_id: 2161051908
-twitter_handle: @AvivaKlompas
-name: Aviva Klompas
----
-Co-founder of Boundless 🌍 Former Head of Speechwriting at 🇮🇱 Mission to UN. Author. Speaker. Write on.

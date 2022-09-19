@@ -1,5 +1,7 @@
 // src/setup.rs
 
+use std::time::Duration;
+
 use sea_orm::*;
 
 // Replace with your database URL
@@ -7,7 +9,6 @@ const DATABASE_URL: &str = "sqlite:./tweets.db";
 
 pub(crate) async fn set_up_db() -> Result<DatabaseConnection, DbErr> {
     let mut opt = ConnectOptions::new(DATABASE_URL.to_owned());
-    opt.sqlx_logging(false);
     let db = Database::connect(opt).await?;
 
     // Replace with your desired database name
@@ -43,5 +44,3 @@ pub(crate) async fn set_up_db() -> Result<DatabaseConnection, DbErr> {
 
     Ok(db)
 }
-
-
