@@ -1,0 +1,7 @@
+---
+user_id: 36386525
+twitter_handle: @CAMERAorg
+name: CAMERAorg
+type: user
+---
+CAMERA - Committee for Accuracy in Middle East Reporting & Analysis. Media-Monitoring & Research. Follows & RT ≠ endorsement.  https://t.co/7hzBbsoxZL

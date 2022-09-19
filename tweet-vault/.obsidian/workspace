@@ -1,0 +1,142 @@
+{
+  "main": {
+    "id": "5c14f0885d9211a9",
+    "type": "split",
+    "children": [
+      {
+        "id": "19cf706200473dbb",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "conversations/conversation-1012187366587392000.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8561fd963b1d3ede",
+    "type": "split",
+    "children": [
+      {
+        "id": "d84ca246f04881b4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3aab47bf49c5962e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "9d6c3d9b294eaa36",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "8a16ea2c2d159d95",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e46d54c4b6f30e71",
+    "type": "split",
+    "children": [
+      {
+        "id": "c9867177c1b2f849",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b7f1a9e1fcedce43",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "conversations/conversation-1012187366587392000.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f8c541c0951b1a93",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "conversations/conversation-1012187366587392000.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7a1581cc88f7ad39",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "84b238c2683e552f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "conversations/conversation-1012187366587392000.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "19cf706200473dbb",
+  "lastOpenFiles": [
+    "conversations/conversation-950129375051042816.md",
+    "tweets/864338207411916804.md",
+    "users/@_amirrahnama.md",
+    "conversations/conversation-864338207411916804.md",
+    "conversations/conversation-878321343984394240.md",
+    "conversations/conversation-1005487535706066946.md",
+    "conversations/conversation-1023774859136921602.md",
+    "conversations/conversation-1023016386019246081.md"
+  ]
+}

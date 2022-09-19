@@ -1,6 +1,14 @@
 ---
-conversation_id: {{CONVERSATION_ID}}
+id: {{CONVERSATION_ID}}
+type: conversation
 ---
-Dataview query that displays all tweets with this conversation id will be here
-
-Maybe a second query of users that are in the conversation
+```dataview
+LIST
+FROM "tweets"
+WHERE 
+type = "tweet"
+AND 
+conversation_id = this.id
+SORT published_date
+ASC
+```

@@ -10,7 +10,9 @@ mod utils;
 #[tokio::main]
 async fn main() {
     println!("Reading Database");
-    let db = data::setup::set_up_db().await.expect("Failed to load database");
+    let db = data::setup::set_up_db()
+        .await
+        .expect("Failed to load database");
     println!("Database loaded");
     println!("Reading Users from Database");
     let users: Vec<UserData> = data::read::users(&db).await;
@@ -19,7 +21,7 @@ async fn main() {
     let tweets: Vec<TweetData> = data::read::tweets(&db).await;
     println!("Tweets loaded");
     println!("Reading Conversations from Database");
-    let conversations: Vec<ConversationData> = data::read::conversations_given_tweets(&db, tweets.clone()).await;
+    let conversations: Vec<i64> = data::read::conversation_ids(&db).await;
     println!("Conversations loaded");
     println!("Creating Directories");
     create_dirs();
@@ -36,7 +38,7 @@ async fn main() {
     println!("Tweets written to Markdown");
     println!("Writing Conversations to Markdown");
     conversations.into_iter().for_each(|conversation| {
-        write_conversation(conversation);
+        write_conversation_from_id(conversation);
     });
     println!("Conversations written to Markdown");
     println!("Done!");
@@ -46,6 +48,12 @@ fn write_conversation(conversation_data: ConversationData) {
     let conversation_id = conversation_data.id;
     let formatted_conversation = format_conversation(conversation_id.to_string());
     let path = format!("tweet-vault/conversations/conversation-{conversation_id}");
+    fs::write(path, formatted_conversation).expect("Failed to write conversation");
+}
+
+fn write_conversation_from_id(conversation_id: i64) {
+    let formatted_conversation = format_conversation(conversation_id.to_string());
+    let path = format!("tweet-vault/conversations/conversation-{conversation_id}.md");
     fs::write(path, formatted_conversation).expect("Failed to write conversation");
 }
 
@@ -97,10 +105,7 @@ fn format_tweet(tweet_data: &TweetData, users: &[UserData]) -> String {
         .replace("{{TWEET_ID}}", &tweet.id.to_string())
         .replace("{{AUTHOR_TWITTER_HANDLE}}", &author_twitter_handle)
         .replace("{{PUBLISHED_DATE}}", &tweet.created_at.to_string())
-        .replace(
-            "{{CONVERSATION_ID}}",
-            &format!("Conversation-{}", &tweet.conversation_id),
-        )
+        .replace("{{CONVERSATION_ID}}", &tweet.conversation_id.to_string())
         .replace("{{IN_REPLY_TO_ID}}", &format_in_reply_to(tweet_data))
         .replace("{{RETWEET_ID}}", &format_retweeted(tweet_data))
         .replace("{{QUOTED_TWEET_ID}}", &format_quoted(tweet_data))

@@ -20,6 +20,17 @@ pub async fn tweets(db: &DatabaseConnection) -> Vec<TweetData> {
     .await
 }
 
+pub async fn conversation_ids(db: &DatabaseConnection) -> Vec<i64> {
+    let conversation_models: Vec<conversations::Model> = Conversations::find()
+        .all(db as &DatabaseConnection)
+        .await
+        .unwrap_or_else(|error| panic!("Failed to get conversations from database. Error: {:?}", error));
+        conversation_models
+            .into_iter()
+            .map(|conversation_model| conversation_model.id)
+            .collect()
+}
+
 pub async fn conversations(db: &DatabaseConnection) -> Vec<ConversationData> {
     let conversation_models: Vec<conversations::Model> = Conversations::find()
         .all(db as &DatabaseConnection)
@@ -32,6 +43,7 @@ pub async fn conversations(db: &DatabaseConnection) -> Vec<ConversationData> {
     )
     .await
 }
+
 pub async fn conversation(db: &DatabaseConnection, conversation_id: i64) -> ConversationData {
     println!("Getting conversation {}", conversation_id);
     let conversation_tweets_from_db = match Tweets::find()
