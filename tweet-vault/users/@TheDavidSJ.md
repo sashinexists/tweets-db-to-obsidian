@@ -3,6 +3,8 @@ user_id: 217666909
 twitter_handle: @TheDavidSJ
 name: David Schneider-Joseph
 type: user
+tags:
+- 
 ---
 Studying math and machine learning.
 

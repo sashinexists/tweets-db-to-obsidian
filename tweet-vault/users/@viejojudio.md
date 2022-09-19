@@ -3,6 +3,8 @@ user_id: 782597636725542912
 twitter_handle: @viejojudio
 name: Viejo Judio
 type: user
+tags:
+- 
 ---
 I find most things Liberals say to be funny.
 

@@ -3,6 +3,8 @@ user_id: 10977452
 twitter_handle: @victorianoi
 name: Victoriano Izquierdo
 type: user
+tags:
+- 
 ---
 Co-founder @graphext 
 Data Analytics + Product + Business 

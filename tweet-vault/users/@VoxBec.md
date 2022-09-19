@@ -3,6 +3,8 @@ user_id: 725650454735003648
 twitter_handle: @VoxBec
 name: Bec Johnson
 type: user
+tags:
+- 
 ---
 PhD: https://t.co/5hqnXyCJVX Uni: @Sydney_Uni 
 Ethical AI student researcher @GoogleResearch

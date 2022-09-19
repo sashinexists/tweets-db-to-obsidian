@@ -3,6 +3,8 @@ user_id: 52660746
 twitter_handle: @Israel
 name: Israel ישראל
 type: user
+tags:
+- 
 ---
 Shalom (yes, it's really us).
 

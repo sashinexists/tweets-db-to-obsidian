@@ -1,6 +1,8 @@
 ---
 id: {{CONVERSATION_ID}}
 type: conversation
+tags:
+- 
 ---
 ```dataview
 LIST

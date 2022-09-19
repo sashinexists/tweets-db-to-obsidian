@@ -3,6 +3,8 @@ user_id: 1510888896
 twitter_handle: @JuhoPiironen
 name: Juho Piironen
 type: user
+tags:
+- 
 ---
 Machine learning and (Bayesian) statistics enthusiast, Ph.D.
 

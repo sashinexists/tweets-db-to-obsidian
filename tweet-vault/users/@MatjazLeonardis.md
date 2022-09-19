@@ -3,6 +3,8 @@ user_id: 387631641
 twitter_handle: @MatjazLeonardis
 name: Matjaž Leonardis
 type: user
+tags:
+- 
 ---
 Interested in learning and creativity. In both humans and machines.
 

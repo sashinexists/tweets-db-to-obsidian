@@ -3,6 +3,8 @@ user_id: 396365748
 twitter_handle: @DShaywitz
 name: David Shaywitz
 type: user
+tags:
+- 
 ---
 MD, PhD. Not good at staying in swim lane. 
 VP-Distinguished R&D Fellow in Data & Digital, Takeda. Also: @HarvardDBMI; @AEI

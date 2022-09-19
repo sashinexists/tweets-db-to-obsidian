@@ -3,6 +3,8 @@ user_id: 21665837
 twitter_handle: @DavidHirsh
 name: David Hirsh
 type: user
+tags:
+- 
 ---
 Russian warship go fuck yourself
 Founder LCSCA @centre_as

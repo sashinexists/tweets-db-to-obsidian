@@ -3,6 +3,8 @@ user_id: 84822915
 twitter_handle: @itamarcaspi
 name: Itamar Caspi
 type: user
+tags:
+- 
 ---
 Economist @ Bank of Israel | adjunct lecturer @HebrewU | co-org @vimacro_org.
 

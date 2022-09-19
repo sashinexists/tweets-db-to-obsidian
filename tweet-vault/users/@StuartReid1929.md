@@ -3,6 +3,8 @@ user_id: 1481930160
 twitter_handle: @StuartReid1929
 name: Stuart Reid 🎲
 type: user
+tags:
+- 
 ---
 Founder @NosibleAI. My beliefs:
 

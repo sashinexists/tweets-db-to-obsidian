@@ -3,6 +3,8 @@ user_id: 865622395
 twitter_handle: @rasbt
 name: Sebastian Raschka
 type: user
+tags:
+- 
 ---
 Researching machine learning & tweeting the good stuff 💥
 

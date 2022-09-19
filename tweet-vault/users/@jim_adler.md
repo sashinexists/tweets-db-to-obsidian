@@ -3,6 +3,8 @@ user_id: 17036374
 twitter_handle: @jim_adler
 name: Jim Adler
 type: user
+tags:
+- 
 ---
 Entrepreneur · Investor · Tech Exec · Data Geek · Privacy Thinker · Founding Managing Director @Toyota_Ventures
 

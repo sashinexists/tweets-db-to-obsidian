@@ -3,6 +3,8 @@ user_id: 458207633
 twitter_handle: @elliottmcollins
 name: Elliott Collins
 type: user
+tags:
+- 
 ---
 Director of Poverty Measurement at IPA (@poverty_action). Usually in DC/Arlington.
 

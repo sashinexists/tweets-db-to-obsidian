@@ -3,6 +3,8 @@ user_id: 142032230
 twitter_handle: @CasualBrady
 name: Brady Neal
 type: user
+tags:
+- 
 ---
 Co-founder of https://t.co/vMksUNSKZR (discord: https://t.co/A8bcredbCk)
 PhD with Yoshua Bengio

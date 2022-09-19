@@ -3,6 +3,8 @@ user_id: 754230507395776512
 twitter_handle: @ehudkar
 name: Ehud Karavani
 type: user
+tags:
+- 
 ---
 Machine Learning 🤖🎓.
 Causal Inference 🔴→🟠←🟡.

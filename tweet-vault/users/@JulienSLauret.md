@@ -3,6 +3,8 @@ user_id: 2306845813
 twitter_handle: @JulienSLauret
 name: Julien Lauret
 type: user
+tags:
+- 
 ---
 I tweet about entrepreneurship, tech, data science. 
 

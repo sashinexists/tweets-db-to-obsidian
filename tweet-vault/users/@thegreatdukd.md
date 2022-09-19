@@ -3,6 +3,8 @@ user_id: 1278803996103397377
 twitter_handle: @thegreatdukd
 name: thegreatdukd
 type: user
+tags:
+- 
 ---
 Onaj što sam te jebao
 

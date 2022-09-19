@@ -3,6 +3,8 @@ user_id: 764666841759354880
 twitter_handle: @bano_sanjeeda
 name: paliyana
 type: user
+tags:
+- 
 ---
 Show forgiveness, speak for justice, and avoid the ignorant!!!
  Qur'an 7:199

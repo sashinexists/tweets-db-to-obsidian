@@ -3,5 +3,7 @@ user_id: 460737707
 twitter_handle: @WhitneyEpi
 name: Whitney R. Robinson
 type: user
+tags:
+- 
 ---
 Epidemiologist 👩🏾‍💻

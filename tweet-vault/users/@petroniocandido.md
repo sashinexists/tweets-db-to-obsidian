@@ -3,6 +3,8 @@ user_id: 14758051
 twitter_handle: @petroniocandido
 name: Petrônio Cândido 🇧🇷
 type: user
+tags:
+- 
 ---
 ✊🖖
 🎓 Professor at IFNMG

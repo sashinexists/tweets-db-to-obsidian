@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "conversations/conversation-1012187366587392000.md",
-            "mode": "source",
+            "file": "custom/Reading.md",
+            "mode": "preview",
             "source": false
           }
         }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "conversations/conversation-1012187366587392000.md",
+                "file": "custom/Reading.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +94,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "conversations/conversation-1012187366587392000.md",
+                "file": "custom/Reading.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -117,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "conversations/conversation-1012187366587392000.md"
+                "file": "custom/Reading.md"
               }
             }
           }
@@ -130,13 +130,15 @@
   },
   "active": "19cf706200473dbb",
   "lastOpenFiles": [
-    "conversations/conversation-950129375051042816.md",
-    "tweets/864338207411916804.md",
-    "users/@_amirrahnama.md",
     "conversations/conversation-864338207411916804.md",
+    "tweets/878321343984394240.md",
     "conversations/conversation-878321343984394240.md",
+    "tweets/864338207411916804.md",
     "conversations/conversation-1005487535706066946.md",
-    "conversations/conversation-1023774859136921602.md",
-    "conversations/conversation-1023016386019246081.md"
+    "conversations/conversation-950129375051042816.md",
+    "tweets/885745370013106176.md",
+    "conversations/conversation-1033493788436647938.md",
+    "conversations/conversation-1012187366587392000.md",
+    "users/@_amirrahnama.md"
   ]
 }

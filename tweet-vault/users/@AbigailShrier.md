@@ -3,6 +3,8 @@ user_id: 429415553
 twitter_handle: @AbigailShrier
 name: Abigail Shrier
 type: user
+tags:
+- 
 ---
 Journalist, Author. 
 

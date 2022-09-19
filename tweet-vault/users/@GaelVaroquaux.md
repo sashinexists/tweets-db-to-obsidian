@@ -3,6 +3,8 @@ user_id: 370409954
 twitter_handle: @GaelVaroquaux
 name: Gael Varoquaux
 type: user
+tags:
+- 
 ---
 Research & code: Research director @inria
 ►Data, Health, & Computer science

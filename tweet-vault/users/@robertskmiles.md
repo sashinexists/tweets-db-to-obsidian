@@ -3,6 +3,8 @@ user_id: 133152680
 twitter_handle: @robertskmiles
 name: Rob Miles
 type: user
+tags:
+- 
 ---
 Explaining AI Alignment to anyone who'll stand still for long enough, on YouTube and Discord.
 

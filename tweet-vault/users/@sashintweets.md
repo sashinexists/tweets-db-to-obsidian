@@ -3,6 +3,8 @@ user_id: 3282807283
 twitter_handle: @sashintweets
 name: Sashin 🖊️🌱🌌 (900/2000 kanji 🇯🇵)
 type: user
+tags:
+- 
 ---
 Writing a better world 🖊️
 

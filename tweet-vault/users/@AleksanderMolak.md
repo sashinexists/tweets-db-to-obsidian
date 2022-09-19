@@ -3,6 +3,8 @@ user_id: 3781101315
 twitter_handle: @AleksanderMolak
 name: Aleksander Molak
 type: user
+tags:
+- 
 ---
 Educator | Speaker | Consultant
 NLP | Causality | Probabilistic modeling 

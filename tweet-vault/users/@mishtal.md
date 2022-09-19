@@ -3,6 +3,8 @@ user_id: 53854893
 twitter_handle: @mishtal
 name: David Collier
 type: user
+tags:
+- 
 ---
 Award winning Investigative Journalist:
 Masters in ethics:

@@ -3,6 +3,8 @@ user_id: 2756672681
 twitter_handle: @KevinKay500bee
 name: Kevin Brown
 type: user
+tags:
+- 
 ---
 Inspirational Quote
 

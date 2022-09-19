@@ -3,6 +3,8 @@ user_id: 826531617225207808
 twitter_handle: @SPilleron
 name: Dr. Sophie Pilleron
 type: user
+tags:
+- 
 ---
 Epidemiologist | #cancer in #OlderAdults, #GeriOnc, #AgeDisparities. 
 IARC alumnus, MSCA Fellow alumnus
