@@ -1,16 +1,16 @@
 {
   "main": {
-    "id": "5c14f0885d9211a9",
+    "id": "d34e4cad8e1c6567",
     "type": "split",
     "children": [
       {
-        "id": "19cf706200473dbb",
+        "id": "2215778f1760e121",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "custom/Reading.md",
-            "mode": "preview",
+            "file": "conversations/conversation-878321343984394240.md",
+            "mode": "source",
             "source": false
           }
         }
@@ -19,15 +19,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "8561fd963b1d3ede",
+    "id": "a4acf367032efb27",
     "type": "split",
     "children": [
       {
-        "id": "d84ca246f04881b4",
+        "id": "8f13657716cbef87",
         "type": "tabs",
         "children": [
           {
-            "id": "3aab47bf49c5962e",
+            "id": "a11caf7230056986",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -35,7 +35,7 @@
             }
           },
           {
-            "id": "9d6c3d9b294eaa36",
+            "id": "d974b89b10dee5a9",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -50,7 +50,7 @@
             }
           },
           {
-            "id": "8a16ea2c2d159d95",
+            "id": "289f7ec51ded0a58",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -64,20 +64,20 @@
     "width": 300
   },
   "right": {
-    "id": "e46d54c4b6f30e71",
+    "id": "3868e4d2282dffff",
     "type": "split",
     "children": [
       {
-        "id": "c9867177c1b2f849",
+        "id": "64e58eb96f2c5392",
         "type": "tabs",
         "children": [
           {
-            "id": "b7f1a9e1fcedce43",
+            "id": "0f128dad9e9f1b34",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "custom/Reading.md",
+                "file": "conversations/conversation-878321343984394240.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,19 +89,19 @@
             }
           },
           {
-            "id": "f8c541c0951b1a93",
+            "id": "591952daedf71134",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "custom/Reading.md",
+                "file": "conversations/conversation-878321343984394240.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "7a1581cc88f7ad39",
+            "id": "20833e0461e9bff7",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -112,12 +112,12 @@
             }
           },
           {
-            "id": "84b238c2683e552f",
+            "id": "1bdabeac26a365bb",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "custom/Reading.md"
+                "file": "conversations/conversation-878321343984394240.md"
               }
             }
           }
@@ -128,17 +128,6 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "19cf706200473dbb",
-  "lastOpenFiles": [
-    "conversations/conversation-864338207411916804.md",
-    "tweets/878321343984394240.md",
-    "conversations/conversation-878321343984394240.md",
-    "tweets/864338207411916804.md",
-    "conversations/conversation-1005487535706066946.md",
-    "conversations/conversation-950129375051042816.md",
-    "tweets/885745370013106176.md",
-    "conversations/conversation-1033493788436647938.md",
-    "conversations/conversation-1012187366587392000.md",
-    "users/@_amirrahnama.md"
-  ]
+  "active": "2215778f1760e121",
+  "lastOpenFiles": []
 }

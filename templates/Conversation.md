@@ -4,13 +4,4 @@ type: conversation
 tags:
 - 
 ---
-```dataview
-LIST
-FROM "tweets"
-WHERE 
-type = "tweet"
-AND 
-conversation_id = this.id
-SORT published_date
-ASC
-```
+{{CONVERSATION_TWEETS}}

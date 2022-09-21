@@ -27,51 +27,73 @@ async fn main() {
     create_dirs();
     println!("Directories created");
     println!("Writing Users to Markdown");
-    users.clone().into_iter().for_each(|user| {
+    users.iter().for_each(|user| {
         write_user(user);
     });
     println!("Users written to Markdown");
     println!("Writing Tweets to Markdown");
-    tweets.into_iter().for_each(|tweet| {
+    tweets.iter().for_each(|tweet| {
         write_tweet(tweet, &users);
     });
+    let tweet_and_conversation_ids = tweets.iter().filter_map(|tweet| {
+        match tweet.tweet {
+            Some(ref tweet) => Some((tweet.id, tweet.conversation_id)),
+            None => None,
+        }
+    }).collect::<Vec<(i64, i64)>>();
     println!("Tweets written to Markdown");
     println!("Writing Conversations to Markdown");
-    conversations.into_iter().for_each(|conversation| {
-        write_conversation_from_id(conversation);
+    conversations.iter().for_each(|conversation| {
+        let conversation_tweets = get_conversation_tweet_ids(conversation, &tweet_and_conversation_ids);
+        write_conversation_from_id(conversation, &conversation_tweets);
     });
     println!("Conversations written to Markdown");
     println!("Done!");
 }
 
-fn write_conversation(conversation_data: ConversationData) {
-    let conversation_id = conversation_data.id;
-    let formatted_conversation = format_conversation(conversation_id.to_string());
-    let path = format!("tweet-vault/conversations/conversation-{conversation_id}");
-    fs::write(path, formatted_conversation).expect("Failed to write conversation");
-}
 
-fn write_conversation_from_id(conversation_id: i64) {
-    let formatted_conversation = format_conversation(conversation_id.to_string());
+fn write_conversation_from_id(conversation_id: &i64, conversation_tweets: &Vec<i64>) {
+    let formatted_conversation = format_conversation(conversation_id.to_string(), conversation_tweets);
     let path = format!("tweet-vault/conversations/conversation-{conversation_id}.md");
     fs::write(path, formatted_conversation).expect("Failed to write conversation");
 }
 
-fn format_conversation(conversation_id: String) -> String {
+fn format_conversation(conversation_id: String, conversation_tweets: &Vec<i64>) -> String {
     let conversation_template = fs::read_to_string("templates/Conversation.md")
         .expect("Failed to read conversation template");
+    let conversation_tweets_formatted = format_conversation_tweet(conversation_tweets);
     conversation_template.replace("{{CONVERSATION_ID}}", &conversation_id)
+        .replace("{{CONVERSATION_TWEETS}}", &conversation_tweets_formatted)
 }
 
-fn write_user(user_data: UserData) {
+fn format_conversation_tweet(conversation_tweets: &Vec<i64>) -> String {
+    let mut formatted_conversation_tweets = String::from("");
+    conversation_tweets.iter().for_each(|tweet_id| {
+       formatted_conversation_tweets.push_str(&format!("![[{tweet_id}]]\n"));
+    });
+    formatted_conversation_tweets
+}
+
+fn get_conversation_tweet_ids(conversation_id:&i64, tweet_ids: &[(i64, i64)]) -> Vec<i64> {
+    tweet_ids.iter().filter_map(|(tweet_id, conversation)| {
+        if conversation == conversation_id {
+            Some(*tweet_id)
+        } else {
+            None
+        }
+    }).collect()
+}
+
+
+fn write_user(user_data: &UserData) {
     let user = user_data.clone().user.expect("Invalid user");
     let path = format!("tweet-vault/users/@{}.md", user.username);
     let formatted_user = format_user(user_data);
     fs::write(path, formatted_user).expect("Unable to write file");
 }
 
-fn format_user(user_data: UserData) -> String {
-    let user = user_data.user.expect("Invalid user");
+fn format_user(user_data: &UserData) -> String {
+    let user = user_data.clone().user.expect("Invalid user");
     let user_template =
         fs::read_to_string("templates/User.md").expect("Unable to read user template");
     user_template
@@ -81,9 +103,9 @@ fn format_user(user_data: UserData) -> String {
         .replace("{{USER_DESCRIPTION}}", &user.description)
 }
 
-fn write_tweet(tweet_data: TweetData, users: &[UserData]) {
+fn write_tweet(tweet_data: &TweetData, users: &[UserData]) {
     let tweet = tweet_data.clone().tweet.expect("Invalid tweet");
-    let formatted_tweet = format_tweet(&tweet_data, users);
+    let formatted_tweet = format_tweet(tweet_data, users);
     let path = format!("tweet-vault/tweets/{}.md", tweet.id);
     fs::write(path, formatted_tweet).expect("Unable to write file");
 }
@@ -167,3 +189,5 @@ fn create_dirs() {
         Err(_) => println!("tweet-vault/conversations directory already exists"),
     };
 }
+
+
