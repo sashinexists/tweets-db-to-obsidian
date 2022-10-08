@@ -1,16 +1,16 @@
 {
   "main": {
-    "id": "d34e4cad8e1c6567",
+    "id": "c4bdae8c38759883",
     "type": "split",
     "children": [
       {
-        "id": "2215778f1760e121",
+        "id": "ea93eed5fc89f174",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "conversations/conversation-878321343984394240.md",
-            "mode": "source",
+            "file": "calendar/2018-07-30.md",
+            "mode": "preview",
             "source": false
           }
         }
@@ -19,15 +19,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "a4acf367032efb27",
+    "id": "d5f9b58ef658099d",
     "type": "split",
     "children": [
       {
-        "id": "8f13657716cbef87",
+        "id": "d9d3d1329cfc4c0f",
         "type": "tabs",
         "children": [
           {
-            "id": "a11caf7230056986",
+            "id": "419451b98e0b0418",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -35,7 +35,7 @@
             }
           },
           {
-            "id": "d974b89b10dee5a9",
+            "id": "c6f7b2e5fb337ea0",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -50,7 +50,7 @@
             }
           },
           {
-            "id": "289f7ec51ded0a58",
+            "id": "fec9e5508574f563",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -64,20 +64,20 @@
     "width": 300
   },
   "right": {
-    "id": "3868e4d2282dffff",
+    "id": "aad4e9793c87c245",
     "type": "split",
     "children": [
       {
-        "id": "64e58eb96f2c5392",
+        "id": "eb13c2b57e52714b",
         "type": "tabs",
         "children": [
           {
-            "id": "0f128dad9e9f1b34",
+            "id": "60e10a1a39f15892",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "conversations/conversation-878321343984394240.md",
+                "file": "calendar/2018-07-30.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,19 +89,19 @@
             }
           },
           {
-            "id": "591952daedf71134",
+            "id": "9e8a98a088566cbd",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "conversations/conversation-878321343984394240.md",
+                "file": "calendar/2018-07-30.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "20833e0461e9bff7",
+            "id": "52c44e07a5f62dc9",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -112,12 +112,12 @@
             }
           },
           {
-            "id": "1bdabeac26a365bb",
+            "id": "7578cde636feb9a8",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "conversations/conversation-878321343984394240.md"
+                "file": "calendar/2018-07-30.md"
               }
             }
           }
@@ -128,6 +128,12 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "2215778f1760e121",
-  "lastOpenFiles": []
+  "active": "ea93eed5fc89f174",
+  "lastOpenFiles": [
+    "calendar/2017-07-21.md",
+    "calendar/2017-07-14.md",
+    "calendar/2017-07-06.md",
+    "calendar/2017-06-23.md",
+    "calendar/2017-05-16.md"
+  ]
 }
