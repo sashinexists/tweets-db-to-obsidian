@@ -8,7 +8,7 @@ retweet: {{RETWEET_ID}}
 quoted_tweet: {{QUOTED_TWEET_ID}}
 type: tweet
 tags:
--
+{{TAGS}}
 ---
 
 {{CONTENT}}

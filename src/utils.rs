@@ -1,11 +1,26 @@
 use chrono::{DateTime, FixedOffset};
 use futures::{future::join_all, StreamExt};
+use regex::Regex;
 use sea_orm::sea_query::tests_cfg;
 use sea_orm::{ActiveValue, ColumnTrait, DatabaseConnection, EntityTrait, QueryFilter};
 use serde::{Deserialize, Serialize};
 
 use crate::data::entities::prelude::*;
 use crate::data::entities::*;
+
+pub struct TweetWithTagsData {
+    pub tweet: TweetData,
+    pub tags: Vec<String>,
+}
+
+impl TweetWithTagsData {
+    pub fn new(tweet: TweetData, corpus_string: &str) -> Self {
+        Self {
+            tweet: tweet.clone(),
+            tags: tweet.get_tags(corpus_string),
+        }
+    }
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TweetData {
@@ -51,10 +66,7 @@ impl TweetData {
         Self { tweet, references }
     }
 
-    pub async fn read_from_data_model(
-        db: &DatabaseConnection,
-        tweet_model: tweets::Model,
-    ) -> Self {
+    pub async fn read_from_data_model(db: &DatabaseConnection, tweet_model: tweets::Model) -> Self {
         let references = TweetReferences::find()
             .filter(tweet_references::Column::SourceTweetId.eq(tweet_model.id))
             .all(db)
@@ -73,11 +85,53 @@ impl TweetData {
         }
     }
 
-
     pub async fn read_many(db: &DatabaseConnection, ids: &[i64]) -> Vec<Self> {
         join_all(ids.iter().map(|id| Self::read(db, *id))).await
     }
 
+    pub fn get_tags(&self, corpus_string: &str) -> Vec<String> {
+        match self.clone().tweet {
+            Some(tweet) => strip_punctuation(tweet.content)
+                .to_ascii_lowercase()
+                .split_ascii_whitespace()
+                .filter(|word| {
+                    let in_tweet_frequency = self.find_term_frequency_in_tweet(word.to_string());
+                    let overall_frequency = get_term_frequency(word.to_string(), corpus_string);
+                    println!(
+                        "{in_tweet_frequency} divided by {overall_frequency} is {}",
+                        in_tweet_frequency / overall_frequency
+                    );
+
+                    in_tweet_frequency / overall_frequency > 100.0
+                })
+                .map(|tag| tag.to_string())
+                .collect(),
+            None => Vec::new(),
+        }
+    }
+
+    pub fn find_term_frequency_in_tweet(&self, term: String) -> f64 {
+        match self.clone().tweet {
+            Some(tweet) => {
+                let counter =
+                    Regex::new(&(r"(?i)".to_string() + &term.to_ascii_lowercase())).unwrap();
+                let term_count_in_tweet: f64 = (counter
+                    .find_iter(&tweet.content.to_ascii_lowercase())
+                    .count()) as f64;
+                let word_count_in_tweet: f64 = (tweet
+                    .content
+                    .to_ascii_lowercase()
+                    .split_ascii_whitespace()
+                    .count()) as f64;
+                // println!(
+                //     "{term_count_in_tweet} divided by {word_count_in_tweet} is {}",
+                //     term_count_in_tweet / word_count_in_tweet
+                // );
+                (term_count_in_tweet / word_count_in_tweet) as f64
+            }
+            None => 0.0,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -86,7 +140,6 @@ pub struct UserData {
 }
 
 impl UserData {
-
     pub async fn empty() -> Self {
         Self { user: None }
     }
@@ -105,10 +158,7 @@ impl UserData {
         Self { user }
     }
 
-    pub async fn read_from_twitter_handle(
-        db: &DatabaseConnection,
-        twitter_handle: &str,
-    ) -> Self {
+    pub async fn read_from_twitter_handle(db: &DatabaseConnection, twitter_handle: &str) -> Self {
         let user = Users::find()
             .filter(users::Column::Username.eq(twitter_handle))
             .one(db)
@@ -121,7 +171,6 @@ impl UserData {
             });
         Self { user }
     }
-
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -134,7 +183,7 @@ pub struct ConversationData {
 pub enum ReferencedTweetKind {
     RepliedTo,
     Quoted,
-    Retweeted
+    Retweeted,
 }
 
 #[derive(Debug, Serialize)]
@@ -163,7 +212,6 @@ impl TweetReferenceData {
         }
     }
 
-
     pub fn clone(&self) -> Self {
         Self {
             reference_type: self.reference_type.clone(),
@@ -181,4 +229,20 @@ pub fn i64_to_u64(i: i64) -> u64 {
 pub fn u64_to_i64(u: u64) -> i64 {
     u.try_into()
         .unwrap_or_else(|error| panic!("Failed to parse i64 from u64. Error:\n{error}"))
+}
+
+pub fn strip_punctuation(term: String) -> String {
+    term.chars()
+        .into_iter()
+        .filter(|c| c.is_ascii_alphanumeric() || c.to_owned() == ' '.to_owned())
+        .collect()
+}
+
+pub fn get_term_frequency(term: String, corpus_string: &str) -> f64 {
+    let counter = Regex::new(&(r"(?i)".to_string() + &term.to_ascii_lowercase())).unwrap();
+    (counter.find_iter(&corpus_string).count()) as f64
+        / (corpus_string
+            .to_ascii_lowercase()
+            .split_ascii_whitespace()
+            .count()) as f64
 }
