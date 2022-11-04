@@ -1,0 +1,152 @@
+{
+  "main": {
+    "id": "075ab18883f40811",
+    "type": "split",
+    "children": [
+      {
+        "id": "9d1c6e94843df19d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d311acfb95287ffb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lists/gems.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fb871b83e603c8a6",
+    "type": "split",
+    "children": [
+      {
+        "id": "cc0ae62c5f4c69f3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2e05613e52979388",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2f576a5717955272",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ec995767d49a7be8",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0fae6d4d41c35a76",
+    "type": "split",
+    "children": [
+      {
+        "id": "2fba08786b6d5f38",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e79d5d46724a870e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "lists/gems.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f049d0dc79dd39f1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "lists/gems.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d596c2cabc57e16a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "ab42e6b2b13020ea",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "lists/gems.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "d311acfb95287ffb",
+  "lastOpenFiles": [
+    "tweets/969650771657543680.md",
+    "tweets/908418583788527616.md",
+    "tweets/883004402046451712.md",
+    "lists/gems.md",
+    "tweets/878321343984394240.md",
+    "calendar/2017-08-08.md",
+    "tweets/894975203893170177.md",
+    "index/behavioraleconomics.md",
+    "tweets/951509536044589056.md",
+    "index/behavior.md"
+  ]
+}

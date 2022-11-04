@@ -30,19 +30,28 @@ async fn main() {
     .to_ascii_lowercase();
     let tweets: Vec<TweetWithTagsData> = tweets
         .iter()
-        .take(50)
+        .take(20)
         .enumerate()
-        .map(|(position, tweet)| {
-            println!("");
+        .map(|(_position, tweet)| {
+            println!("{_position}");
             TweetWithTagsData::new(tweet.clone(), &corpus_string)
         })
         .collect();
+
+    let tags = tweets
+        .iter()
+        .fold(Vec::<String>::new(), |mut output, tweet| {
+            output.extend(tweet.tags.clone());
+            output
+        });
     println!("Tweets loaded");
     println!("Reading Conversations from Database");
     let conversations: Vec<i64> = data::read::conversation_ids(&db).await;
     println!("Conversations loaded");
     println!("Creating Directories");
     create_dirs();
+    tags.iter()
+        .for_each(|tag| write_tag_to_index(tag.to_string(), &tweets));
     println!("Directories created");
     println!("Writing Users to Markdown");
     users.iter().for_each(|user| {
@@ -70,6 +79,11 @@ async fn main() {
     });
     println!("Conversations written to Markdown");
     println!("Done!");
+    fs::write(
+        "tweet-vault/lists/gems.md",
+        "```dataview\nLIST FROM #gem\n```",
+    )
+    .expect("Failed to create gems file");
 }
 
 fn write_conversation_from_id(conversation_id: &i64, conversation_tweets: &Vec<i64>) {
@@ -162,6 +176,15 @@ fn format_tweet(tweet_data: &TweetData, tags: Vec<String>, users: &[UserData]) -
         .replace("{{RETWEET_ID}}", &format_retweeted(tweet_data))
         .replace("{{QUOTED_TWEET_ID}}", &format_quoted(tweet_data))
         .replace("{{TAGS}}", &format_tags(&tags))
+        .replace("{{TAGS_LINKS}}", &format_tags_list(&tags))
+        .replace(
+            "{{PUBLISHED_DATE_IN_CALENDAR}}",
+            &tweet.created_at.date_naive().to_string(),
+        )
+        .replace(
+            "{{TWITTER_URL}}",
+            &format_tweet_url(&tweet.id, &author_twitter_handle),
+        )
 }
 
 fn format_in_reply_to(tweet_data: &TweetData) -> String {
@@ -209,6 +232,12 @@ fn format_tags(tags: &Vec<String>) -> String {
     })
 }
 
+fn format_tags_list(tags: &Vec<String>) -> String {
+    tags.into_iter().fold("".to_string(), |output, tag| {
+        output + &format!("- [[index/{}|{}]]\n", tag, tag)
+    })
+}
+
 fn write_tweet_to_calendar(tweet_data: &TweetData, users: &[UserData]) {
     let tweet = tweet_data.clone().tweet.expect("Invalid tweet");
     let embedded_tweet_string = format!("![[{}]]\n", tweet.id);
@@ -221,6 +250,19 @@ fn write_tweet_to_calendar(tweet_data: &TweetData, users: &[UserData]) {
         .open(path)
         .expect("Failed to open or create file");
     write!(file, "{}", embedded_tweet_string).expect("Failed to write file");
+}
+
+fn write_tag_to_index(tag: String, tweets: &Vec<TweetWithTagsData>) {
+    let path = format!("tweet-vault/index/{tag}.md");
+    let mut content = String::new();
+    tweets.iter().for_each(|tweet| {
+        if tweet.tags.contains(&tag) {
+            if let Some(tweet) = &tweet.tweet.tweet {
+                content += &format!("![[{}]]\n", tweet.id)
+            }
+        }
+    });
+    fs::write(path, content).expect("Failed to write file for tag {tag}");
 }
 
 fn create_dirs() {
@@ -244,4 +286,16 @@ fn create_dirs() {
         Ok(_) => println!("Created tweet-vault/calendar directory"),
         Err(_) => println!("tweet-vault/calendar directory already exists"),
     };
+    match fs::create_dir("tweet-vault/index") {
+        Ok(_) => println!("Created tweet-vault/index/ directory"),
+        Err(_) => println!("tweet-vault/index directory already exists"),
+    };
+    match fs::create_dir("tweet-vault/lists") {
+        Ok(_) => println!("Created tweet-vault/lists/ directory"),
+        Err(_) => println!("tweet-vault/lists directory already exists"),
+    };
+}
+
+fn format_tweet_url(tweet_id: &i64, twitter_handle: &str) -> String {
+    format!("https://twitter.com/{twitter_handle}/status/{tweet_id}")
 }

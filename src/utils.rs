@@ -97,12 +97,12 @@ impl TweetData {
                 .filter(|word| {
                     let in_tweet_frequency = self.find_term_frequency_in_tweet(word.to_string());
                     let overall_frequency = get_term_frequency(word.to_string(), corpus_string);
-                    println!(
-                        "{in_tweet_frequency} divided by {overall_frequency} is {}",
-                        in_tweet_frequency / overall_frequency
-                    );
+                    // println!(
+                    //     "{in_tweet_frequency} divided by {overall_frequency} is {}",
+                    //     in_tweet_frequency / overall_frequency
+                    // );
 
-                    in_tweet_frequency / overall_frequency > 100.0
+                    in_tweet_frequency / overall_frequency > 200.0
                 })
                 .map(|tag| tag.to_string())
                 .collect(),
