@@ -1,19 +1,19 @@
 {
   "main": {
-    "id": "075ab18883f40811",
+    "id": "d8a89c29440ded38",
     "type": "split",
     "children": [
       {
-        "id": "9d1c6e94843df19d",
+        "id": "5ae7a13d2edaa280",
         "type": "tabs",
         "children": [
           {
-            "id": "d311acfb95287ffb",
+            "id": "dca1b7db9b71a157",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lists/gems.md",
+                "file": "index/abstracts.md",
                 "mode": "preview",
                 "source": false
               }
@@ -25,15 +25,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "fb871b83e603c8a6",
+    "id": "67fadde2140b2db3",
     "type": "split",
     "children": [
       {
-        "id": "cc0ae62c5f4c69f3",
+        "id": "8d35801572156441",
         "type": "tabs",
         "children": [
           {
-            "id": "2e05613e52979388",
+            "id": "0bf562fb5bdc6583",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +43,7 @@
             }
           },
           {
-            "id": "2f576a5717955272",
+            "id": "a748178d3901e0f8",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -58,7 +58,7 @@
             }
           },
           {
-            "id": "ec995767d49a7be8",
+            "id": "32dd4be0da01e4b1",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -72,20 +72,20 @@
     "width": 300
   },
   "right": {
-    "id": "0fae6d4d41c35a76",
+    "id": "4f7e2bfcdfdbdfa8",
     "type": "split",
     "children": [
       {
-        "id": "2fba08786b6d5f38",
+        "id": "b4f7f21de26da92e",
         "type": "tabs",
         "children": [
           {
-            "id": "e79d5d46724a870e",
+            "id": "435dbc0bd81bc4a1",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lists/gems.md",
+                "file": "index/abstracts.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,19 +97,19 @@
             }
           },
           {
-            "id": "f049d0dc79dd39f1",
+            "id": "f8d50463e36b5220",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "lists/gems.md",
+                "file": "index/abstracts.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "d596c2cabc57e16a",
+            "id": "34b4ec18c3e8bf43",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -120,12 +120,12 @@
             }
           },
           {
-            "id": "ab42e6b2b13020ea",
+            "id": "ed5b6594121a0c6d",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "lists/gems.md"
+                "file": "index/abstracts.md"
               }
             }
           }
@@ -136,17 +136,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "d311acfb95287ffb",
+  "active": "dca1b7db9b71a157",
   "lastOpenFiles": [
-    "tweets/969650771657543680.md",
-    "tweets/908418583788527616.md",
-    "tweets/883004402046451712.md",
-    "lists/gems.md",
-    "tweets/878321343984394240.md",
-    "calendar/2017-08-08.md",
-    "tweets/894975203893170177.md",
-    "index/behavioraleconomics.md",
-    "tweets/951509536044589056.md",
-    "index/behavior.md"
+    "index/po.md",
+    "index/absolved.md",
+    "index/abbas.md",
+    "index/ab.md",
+    "index/abandoning.md",
+    "index/aafia.md",
+    "index/aaai.md",
+    "index/aa.md",
+    "calendar/2018-06-29.md",
+    "calendar/2018-01-11.md"
   ]
 }

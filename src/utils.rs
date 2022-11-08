@@ -14,10 +14,10 @@ pub struct TweetWithTagsData {
 }
 
 impl TweetWithTagsData {
-    pub fn new(tweet: TweetData, corpus_string: &str) -> Self {
+    pub fn new(tweet: TweetData, all_tags: &Vec<String>) -> Self {
         Self {
             tweet: tweet.clone(),
-            tags: tweet.get_tags(corpus_string),
+            tags: tweet.get_tags(all_tags.clone()),
         }
     }
 }
@@ -89,23 +89,21 @@ impl TweetData {
         join_all(ids.iter().map(|id| Self::read(db, *id))).await
     }
 
-    pub fn get_tags(&self, corpus_string: &str) -> Vec<String> {
+    pub fn get_tags(&self, all_tags: Vec<String>) -> Vec<String> {
         match self.clone().tweet {
-            Some(tweet) => strip_punctuation(tweet.content)
-                .to_ascii_lowercase()
-                .split_ascii_whitespace()
-                .filter(|word| {
-                    let in_tweet_frequency = self.find_term_frequency_in_tweet(word.to_string());
-                    let overall_frequency = get_term_frequency(word.to_string(), corpus_string);
-                    // println!(
-                    //     "{in_tweet_frequency} divided by {overall_frequency} is {}",
-                    //     in_tweet_frequency / overall_frequency
-                    // );
+            Some(tweet) => {
+                let tweet_content = tweet.content.to_ascii_lowercase();
+                let tweet_words: Vec<String> = tweet_content
+                    .split_ascii_whitespace()
+                    .filter(|word| has_punctuation(word))
+                    .map(|word| strip_punctuation(word.to_owned()))
+                    .collect();
 
-                    in_tweet_frequency / overall_frequency > 200.0
-                })
-                .map(|tag| tag.to_string())
-                .collect(),
+                all_tags
+                    .into_iter()
+                    .filter(|tag| tweet_words.iter().any(|word| word == tag))
+                    .collect()
+            }
             None => Vec::new(),
         }
     }
@@ -234,8 +232,13 @@ pub fn u64_to_i64(u: u64) -> i64 {
 pub fn strip_punctuation(term: String) -> String {
     term.chars()
         .into_iter()
-        .filter(|c| c.is_ascii_alphanumeric() || c.to_owned() == ' '.to_owned())
+        .filter(|c| c.is_alphabetic() || c.to_owned() == ' '.to_owned())
         .collect()
+}
+pub fn has_punctuation(term: &str) -> bool {
+    term.chars()
+        .into_iter()
+        .all(|c| c.is_alphabetic() || '.' == c || ',' == c)
 }
 
 pub fn get_term_frequency(term: String, corpus_string: &str) -> f64 {

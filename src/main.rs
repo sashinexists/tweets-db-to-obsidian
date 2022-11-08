@@ -1,6 +1,7 @@
-use crate::utils::{strip_punctuation, UserData};
+use crate::utils::{has_punctuation, strip_punctuation, UserData};
 use data::entities::users;
 use futures::executor::block_on;
+use std::collections::HashSet;
 use std::fs;
 use std::io::Write;
 use utils::{ConversationData, TweetData, TweetWithTagsData};
@@ -18,32 +19,74 @@ async fn main() {
     let users: Vec<UserData> = data::read::users(&db).await;
     println!("Users loaded");
     println!("Reading Tweets from Database");
-    let tweets: Vec<TweetData> = data::read::tweets(&db).await;
+    let mut tweets: Vec<TweetData> = data::read::tweets(&db).await;
+    let judea_pearl_tweets = tweets
+        .clone()
+        .into_iter()
+        .filter(|tweet| match tweet.tweet.clone() {
+            Some(tweet_data) => tweet_data.author_id == 3363584909,
+            None => false,
+        });
+    let corpus: Vec<String> = judea_pearl_tweets
+        .clone()
+        .into_iter()
+        .flat_map(|tweet| -> Option<String> {
+            Some(tweet.clone().tweet?.content.to_ascii_lowercase())
+        })
+        .fold(Vec::<String>::new(), |mut acc, tweet| {
+            acc.append(
+                &mut tweet
+                    .clone()
+                    .split_ascii_whitespace()
+                    .map(|word| word.to_string())
+                    .collect::<Vec<String>>(),
+            );
+            acc
+        })
+        .into_iter()
+        .collect::<HashSet<String>>()
+        .into_iter()
+        .collect::<Vec<String>>();
+    let corpus_file_path = format!("JudeaPearlWords_beforeFiltering.md");
+    let corpus_file_content = format!("{:#?}", corpus);
+    fs::write(corpus_file_path, corpus_file_content)
+        .expect("Failed to write file for Judea Pearl's words");
 
-    let corpus_string = strip_punctuation(
-        tweets
-            .clone()
-            .into_iter()
-            .flat_map(|tweet| -> Option<String> { Some(tweet.clone().tweet?.content) })
-            .collect::<String>(),
-    )
-    .to_ascii_lowercase();
+    let filtered_corpus = corpus
+        .into_iter()
+        .filter(|word| has_punctuation(word))
+        .map(|word| strip_punctuation(word))
+        .collect::<HashSet<String>>()
+        .into_iter()
+        .collect::<Vec<String>>();
+
+    let filtered_corpus_file_path = format!("JudeaPearlWords_afterFiltering.md");
+    let filtered_corpus_file_content = format!("{:#?}", filtered_corpus);
+    fs::write(filtered_corpus_file_path, filtered_corpus_file_content)
+        .expect("Failed to write file for Judea Pearl's words after filtering punctuation");
+    let common_words: Vec<String> = fs::read_to_string("CommonWords.md")
+        .expect("Failed to read common words markdown")
+        .split(",")
+        .into_iter()
+        .map(|word| word.to_string())
+        .collect();
+
+    let tags: Vec<String> = get_tags(filtered_corpus, common_words);
+    let tag_file_path = format!("JudeaPearlKeywords.md");
+    let tag_file_content = format!("{:#?}", tags);
+    fs::write(tag_file_path, tag_file_content)
+        .expect("Failed to write file for Judea Pearl's Keywords");
+    tweets.reverse();
     let tweets: Vec<TweetWithTagsData> = tweets
         .iter()
-        .take(20)
+        // .take(1000)
         .enumerate()
         .map(|(_position, tweet)| {
             println!("{_position}");
-            TweetWithTagsData::new(tweet.clone(), &corpus_string)
+            TweetWithTagsData::new(tweet.clone(), &tags)
         })
         .collect();
 
-    let tags = tweets
-        .iter()
-        .fold(Vec::<String>::new(), |mut output, tweet| {
-            output.extend(tweet.tags.clone());
-            output
-        });
     println!("Tweets loaded");
     println!("Reading Conversations from Database");
     let conversations: Vec<i64> = data::read::conversation_ids(&db).await;
@@ -298,4 +341,14 @@ fn create_dirs() {
 
 fn format_tweet_url(tweet_id: &i64, twitter_handle: &str) -> String {
     format!("https://twitter.com/{twitter_handle}/status/{tweet_id}")
+}
+
+fn get_tags(corpus: Vec<String>, common_words: Vec<String>) -> Vec<String> {
+    corpus
+        .into_iter()
+        .filter(|word| !common_words.contains(&word.to_string()) && !word.starts_with("http"))
+        .map(|word| word.to_string())
+        .collect::<HashSet<String>>()
+        .into_iter()
+        .collect()
 }
